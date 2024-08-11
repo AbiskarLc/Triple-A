@@ -83,21 +83,28 @@ const getDonationById = async (req,res,next) =>{
 const updateDonationStatus = async (req,res,next) =>{
 
  try {
-
+  const {receiverId,deliveryAddress} = req.body;
   const {donationId} = req.params
+  const {id} = req.user;
+  if(receiverId!==id){
+    return next({message:"User is not authenticated",status:401})
+  }
 
-   const getDonationInfo = await Donation.findById(donationId);
+   const getDonationInfo = await Donation.findByIdAndUpdate(donationId,{
+    receiverId,
+    deliveryAddress,
+    status: 'pending'
+   });
 
    if(!getDonationInfo){
-    return next({message:"Donation not found",status:404})
+    return next({message:"Donation not found, Failed to receive donation",status:404})
    }
-
-   console.log(getDonationInfo);
   
-  return res.json("Hello");
+  return res.json({message:"Updated Successfully",extraDetails:"Donation on the way"});
   
  } catch (error) {
-  
+  console.log(error)
+  return next({message:"failed to update donation",status:500})
  }
 }
 module.exports = { createDonation, getAllDonations, getDonationById, updateDonationStatus}

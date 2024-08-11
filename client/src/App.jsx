@@ -9,6 +9,7 @@ import PrivateRoute from "./Components/PrivateRoute"
 import FrontPage from "./Pages/FrontPage"
 import NewsFeed from "./Components/NewsFeed"
 import Donations from "./Pages/Donations"
+import About from "./Pages/About"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<FrontPage/>}/>
         <Route path="/sign-in"  element={<Login/>} />
         <Route path="/sign-up"  element={<SignUp/>} />
+        <Route path="/about"  element={<About/>} />
 
         <Route element={<PrivateRoute/>}>
         <Route path="/home"  element={<Home/>} />

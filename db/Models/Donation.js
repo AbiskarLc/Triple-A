@@ -36,7 +36,7 @@ const donationSchema = new Schema({
     },
     status:{
         type:String,
-        default: "pending"
+        default: "available"
     },
     available:{
         type: Boolean,

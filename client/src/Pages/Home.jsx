@@ -39,7 +39,7 @@ const Home = () => {
                 className=" w-12 h-12 rounded-full"
               />
               <div className=" flex flex-col gap-2">
-                <h1 className=" text-black text-xl  font-semibold">
+                <h1 className=" text-black text-xl  font-semibold max-md:text-sm">
                   {currentUser.firstName+ " "+ currentUser.lastName}
                 </h1>
                 <div>
@@ -49,7 +49,7 @@ const Home = () => {
               </div>
             </div>
             <div className="flex-1 flex flex-col bg-white shadow-xl   rounded-xl p-4 gap-2  md:w-[40%] cursor-pointer">
-              <h1 className=" text-black text-xl  font-semibold">
+              <h1 className=" text-black text-xl  font-semibold max-md:text-sm">
                 Important Notifications
               </h1>
               <div className=" flex items-center gap-2">
@@ -60,7 +60,7 @@ const Home = () => {
                   className=" w-12 h-12 rounded-full"
                 />
 
-                <p className=" text-sm text-[#595959]">
+                <p className=" md:text-sm text-[#595959] text-xs">
                   You are updated no new notifications
                 </p>
               </div>
@@ -76,16 +76,16 @@ const Home = () => {
             </div>
               <div  className=" flex-1 flex justify-around items-center">
               <div className=" flex flex-col items-center">
-                  <p className=" text-3xl text-amber-600">0</p>
-                  <p className=" text-[#595959]">Successful</p>
+                  <p className=" text-3xl text-amber-600">1</p>
+                  <p className=" text-[#595959] max-md:text-sm">Successful</p>
+                 </div>
+              <div className=" flex flex-col items-center">
+                  <p className=" text-3xl text-amber-600">2</p>
+                  <p className=" text-[#595959] max-md:text-sm">Pending</p>
                  </div>
               <div className=" flex flex-col items-center">
                   <p className=" text-3xl text-amber-600">0</p>
-                  <p className=" text-[#595959]">Pending</p>
-                 </div>
-              <div className=" flex flex-col items-center">
-                  <p className=" text-3xl text-amber-600">0</p>
-                  <p className=" text-[#595959]">Cancellations</p>
+                  <p className=" text-[#595959] max-md:text-sm">Cancellations</p>
                  </div>
               </div>
                 
@@ -98,15 +98,15 @@ const Home = () => {
               <p className=" text text-blue-600 text-xs hover:underline">More Info</p>
 
             </div>
-              <div  className=" flex-1 flex  items-center justify-between max-md:flex-col max-md:gap-4 p-3">
+              <div  className=" flex-1 flex  items-center justify-between max-md:flex-col max-md:gap-6 p-3">
                 <Link to={"https://www.samriddhifoundation.com"}>
-              <img src="/icons/partner-1.png" className=" w-[200px] h-auto max-md:h-60" alt="" />
+              <img src="/icons/partner-1.png" className=" w-[200px] max-md:h-[200px] h-auto " alt="" />
                 </Link>
                 <Link to={"https://www.unicef.com"}>
-              <img src="/icons/partner-2.png" className=" w-[200px] h-auto max-md:h-60" alt="" />
+              <img src="/icons/partner-2.png" className=" w-[200px] max-md:h-[200px] h-auto " alt="" />
                 </Link>
                 <Link to={"https://www.redcross.com"}>
-              <img src="/icons/partner-3.png" className=" w-[200px] h-[80%] max-md:h-60" alt="" />
+              <img src="/icons/partner-3.png" className=" w-[200px] max-md:h-[200px] h-[80%] " alt="" />
                 </Link>
               </div>
                 

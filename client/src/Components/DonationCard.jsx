@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -8,6 +8,7 @@ const DonationCard = ({ donation }) => {
 
   const {currentUser}= useSelector(state=>state.user);
   const [user,setUser] = useState(null);
+  const toast = useToast();
   const { donationCategory, _id, status, pickUpAddress,donorId } = donation;
   const navigate = useNavigate();
   useEffect(()=>{
@@ -43,12 +44,12 @@ const DonationCard = ({ donation }) => {
     
         <div className=" flex p-1 rounded-2xl items-center gap-1 border-sky-600 border-2  ">
           <img
-            src={ donationCategory ==="food"?"/icons/food-icon.png":"/icons/clothes.png"}
+            src={ donationCategory ==="Food"?"/icons/food-icon.png":"/icons/clothes.png"}
             className=" w-8 h-8 rounded-full"
             alt=""
           />
           <p className=" text-sm text-teal-700 cursor-pointer">{
-donationCategory === "food"?
+donationCategory === "Food"?
 "Food": "Clothes"}</p>
         </div>
       </div>
@@ -73,9 +74,25 @@ donationCategory === "food"?
         {
           currentUser.usertype === 'receiver' &&
          (
-          <Button className=" mt-2 "  color={'white'}  bg={'#ff6d1b'} onClick={()=> navigate(`/receive/${_id}`)}>
-          Receive
-       </Button>
+          <button className={` mt-2 ${status==="pending"?"bg-blue-600 hover:bg-white hover:border-sky-600 hover:text-blue-600":'bg-[#ff6d1b] hover:bg-white hover:border-orange-600 hover:text-orange-600'} text-white p-2 rounded-lg border-2 border-transparent `}   onClick={()=>{
+
+            if(status==="pending"){
+              toast({
+                title:"Unavailable",
+                description: "Donation is already pending",
+                status:'info',
+                isClosable:true
+              
+              })
+            }else{
+              navigate(`/receive/${_id}`)
+            }
+          } } 
+          >
+            {
+              status==="pending"?"Pending":'Receive'
+            }
+       </button>
          )
         }
     </div>
